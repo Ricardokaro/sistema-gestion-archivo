@@ -24,6 +24,9 @@ Route::get('/', function () {
 
 Route::get('notes', 'NotesController@index');
 
+Route::get('secciones', 'SecionesController@index');
+Route::post('secciones/insert', 'SecionesController@store')->name('guardarSeccion');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
