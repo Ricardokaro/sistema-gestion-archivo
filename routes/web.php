@@ -11,6 +11,22 @@
 |
 */
 
+
+
+Route::group(['middleware' => ['permission:destroy_notes']], function () {
+    Route::get('notes/{id}/destroy', 'NotesController@destroy')->name('notes.destroy');
+});
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('notes', 'NotesController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
