@@ -8,7 +8,7 @@
                 <div class="panel-heading">Panel de Gestion de Secciones</div>
                 <div class="panel-body">
                    
-                <form method="POST" action="{{ route('guardarSeccion') }}">
+                <form method="POST" action="{{ route('guardar-seccion') }}">
                 {{ csrf_field() }}
                   <div class="form-group">
                     <label for="nombreSeccion">Nombre</label>
