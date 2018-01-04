@@ -13,10 +13,16 @@ class CreateSubSeccionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_secciones', function (Blueprint $table) {
-            $table->increments('id');
+      
+        Schema::create('sub_secciones', function (Blueprint $table) {           
+            $table->increments('id')->unsigned();
             $table->String('nombre');
-            $table->integer('seccion_id');
+            
+            $table->integer('seccion_id')->unsigned();
+            $table->foreign('seccion_id')
+                  ->references('id')
+                  ->on('secciones');
+                  
 
             $table->timestamps();
         });
