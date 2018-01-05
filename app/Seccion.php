@@ -11,6 +11,6 @@ class Seccion extends Model
     protected $fillable = ['id', 'nombre'];  
     
     public function subSecciones(){
-        return $this->hasMany('App\SubSecciones')
+        return $this->hasMany('App\SubSeccion');
     }
 }

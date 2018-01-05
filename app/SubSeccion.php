@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SubSecciones extends Model
+class SubSeccion extends Model
 {
     protected $table = 'sub_secciones';
-    protected $fillable = ['id', 'nombre','id_seccion'];  
+    protected $fillable = ['id', 'nombre','seccion_id'];  
     
-    public function Seccion(){
+    public function seccion(){
         return $this->belongsTo('App\Seccion');
     }
 }

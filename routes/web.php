@@ -19,8 +19,10 @@ Route::group(['middleware' => ['permission:destroy_notes']], function () {
 
 Route::group(['prefix' => 'admin',  'middleware' => 'permission:crear_seccion'], function()
 {
-    Route::get('secciones', 'SecionesController@index')->name('guardar-seccion');
+    Route::get('secciones', 'SecionesController@index')->name('guardar-seccion');    
+    Route::get('sub-secciones','SubSeccionController@index')->name('guardar-sub-secciones');
     Route::post('secciones/insert', 'SecionesController@store')->name('crear-seccion');
+    Route::post('sub-seccion/insert', 'SubSeccionController@store')->name('crear-sub-seccion');
 });
 
 
@@ -29,10 +31,6 @@ Route::get('/', function () {
 });
 
 Route::get('notes', 'NotesController@index');
-
-
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
