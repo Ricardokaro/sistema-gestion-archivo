@@ -12,4 +12,8 @@ class SubSeccion extends Model
     public function seccion(){
         return $this->belongsTo('App\Seccion');
     }
+
+    public function inventario(){
+        return $this->hasMany('App\Inventario');
+    }
 }
