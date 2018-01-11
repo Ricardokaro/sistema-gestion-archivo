@@ -97,27 +97,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         Inventario
-                    </div>
-                    <form method="POST" action="{{ route('buscar-inventario') }}">
-                    {{ csrf_field() }}
-                    <div class="col-md-3">                   
-                        <input type="text" class="form-control" name="buscar" placeholder="Buascar"> 
-                    </div>
-                    <div class="col-md-3">                   
-                    <select class="form-control"  name="tipo" >
-                        <option value="1" >Nombre Seccion</option> 
-                        <option value="2" >nombre Sub Seccion</option>
-                        <option value="3" >Expediente</option>  
-                        <option value="4" >Codigo</option> 
-                      </select> 
-                    </div>
-
-                    <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary">Buscar</button>
-                    </div>
-
-                    </form>
-                </div>            
+                    </div>                    
+                </div>           
 
                 </div>
                 <div class="panel-body">
@@ -125,6 +106,7 @@
                 <table class="table" id="tabla-inventario">
                     <thead>
                         <tr>
+                        <th scope="col">Id</th>
                         <th scope="col">Consecutivo</th>
                         <th scope="col">Nombre Seccion</th>
                         <th scope="col">Nombre Sub Seccion</th>
@@ -148,6 +130,10 @@
     </div>
 </div>
 
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">  
+<script src="//code.jquery.com/jquery.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
 <script type="text/javascript">
 
     $(document).ready(function() {
@@ -158,7 +144,7 @@
             "columns": [
                 {data: 'id', name: 'id'},
                 {data: 'consecutivo', name: 'consecutivo'},
-                {data: 'seccion_id', name: 'seccion_id'},
+                {data: 'seccion[0]', name: 'seccion_ida'},
                 {data: 'sub_seccion_id', name: 'sub_seccion_id'},
                 {data: 'nombre_expediente', name: 'nombre_expediente'},
                 {data: 'codigo', name: 'codigo'},

@@ -43,11 +43,13 @@ class InventariosController extends Controller
         $inventario->fecha_final = $request->fecha_final;
 
         $inventario->save();
+        return back();
     }
 
     public function anyData()
     {
-       $inventarioslist = Inventario::all();       
+       $inventarioslist = Inventario::all(); 
+       $inventarioslist->load('seccion', 'subSeccion');      
        return Datatables::of($inventarioslist)->make(true);
     }
     
