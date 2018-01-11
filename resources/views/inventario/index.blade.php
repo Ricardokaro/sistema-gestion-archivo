@@ -130,13 +130,13 @@
     </div>
 </div>
 
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">  
-<script src="//code.jquery.com/jquery.js"></script>
-<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<!--<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">-->  
+<!--<script src="//code.jquery.com/jquery.js"></script>-->
+<!--<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function() {  
         oTable = $('#tabla-inventario').DataTable({
             "processing": true,
             "serverSide": true,
