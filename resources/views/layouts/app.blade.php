@@ -11,8 +11,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">  
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <!--<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">-->
+    <!--<script src="//code.jquery.com/jquery.js"></script>-->
+    <script src="//code.jquery.com/jquery.js"></script>   
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> 
+  
+      
+   
+    
 </head>
 <body>
     <div id="app">
@@ -75,11 +83,15 @@
         @yield('content')
     </div>
 
+    
+    <script src="//code.jquery.com/jquery.js"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
         <!-- jQuery -->
-    <script src="//code.jquery.com/jquery.js"></script>
+   
         <!-- DataTables -->
-    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <!--<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>-->
+  
+   
 </body>
 </html>

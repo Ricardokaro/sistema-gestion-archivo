@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Seccion;
 use App\SubSeccion;
 use App\Inventario;
+use Yajra\DataTables\Facades\DataTables;
 
 class InventariosController extends Controller
 {
@@ -44,14 +45,10 @@ class InventariosController extends Controller
         $inventario->save();
     }
 
-    public function buscar(Request $request){
-        $buscar = $request->buscar;
-        $tipo = $request->tipo;
-
-        if($buscar == '3'){
-            $inventarios = DB::table('inventarios')->where('nombre_expediente', 'LIKE','%'.$buscar.'%')->get();
-            dd($inventario); 
-        }
-        
+    public function anyData()
+    {
+       $inventarioslist = Inventario::all();       
+       return Datatables::of($inventarioslist)->make(true);
     }
+    
 }

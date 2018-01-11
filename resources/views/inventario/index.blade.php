@@ -122,7 +122,7 @@
                 </div>
                 <div class="panel-body">
 
-                <table class="table">
+                <table class="table" id="tabla-inventario">
                     <thead>
                         <tr>
                         <th scope="col">Consecutivo</th>
@@ -139,25 +139,7 @@
                         <th scope="col">Fecha Final</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    @foreach($inventarioslist as $inventario)
-                        <tr>                       
-                            <td>{{ $inventario->consecutivo }}</td>
-                            <td>{{ $inventario->seccion->nombre }}</td>
-                            <td>{{ $inventario->subSeccion->nombre }}</td>
-                            <td>{{ $inventario->nombre_expediente }}</td>
-                            <td>{{ $inventario->codigo }}</td>
-                            <td>{{ $inventario->caja }}</td>
-                            <td>{{ $inventario->carpeta }}</td>
-                            <td>{{ $inventario->n_folios }}</td>
-                            <td>{{ $inventario->numero_uno }}</td>
-                            <td>{{ $inventario->numero_dos }}</td>
-                            <td>{{ $inventario->fecha_inicial }}</td>
-                            <td>{{ $inventario->fecha_final }}</td>
-                        </tr>
-                    @endforeach                       
-                       
-                    </tbody>
+                   
                     </table>
 
                 </div>    
@@ -165,4 +147,32 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        oTable = $('#tabla-inventario').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": "{{ route('listado-inventarios') }}",
+            "columns": [
+                {data: 'id', name: 'id'},
+                {data: 'consecutivo', name: 'consecutivo'},
+                {data: 'seccion_id', name: 'seccion_id'},
+                {data: 'sub_seccion_id', name: 'sub_seccion_id'},
+                {data: 'nombre_expediente', name: 'nombre_expediente'},
+                {data: 'codigo', name: 'codigo'},
+                {data: 'caja', name: 'caja'},
+                {data: 'carpeta', name: 'carpeta'},
+                {data: 'n_folios', name: 'n_folios'},
+                {data: 'numero_uno', name: 'numero_uno'},
+                {data: 'numero_dos', name: 'numero_dos'},
+                {data: 'fecha_inicial', name: 'fecha_inicial'},
+                {data: 'fecha_final', name: 'fecha_final'}
+
+            ]
+        });
+    });
+</script>
+
 @endsection

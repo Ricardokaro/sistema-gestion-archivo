@@ -20,21 +20,21 @@ class NotesSeeder extends Seeder
             'content' => 'contenido del ejemplo uno',            
         ]);*/
 
-        //$role = Role::create(['name' => 'Administrator']);
+        $role = Role::create(['name' => 'Administrator']);
         $role = Role::find(1);         
         Permission::create(['name' => 'crear_seccion']);
-        // La variable $role contiene el rol Administrator
+        //La variable $role contiene el rol Administrator
         $role->givePermissionTo('crear_seccion');
         //Verificar que el epersimo este asignado a este rol
-        //$role->hasPermissionTo('crear_seccion');
+        $role->hasPermissionTo('crear_seccion');
         // Creación del usuario
-        /*$user = User::create([
+        $user = User::create([
             'name' => 'Ricardo',
             'email' => 'ricardo.caro9@hotmail.com',
             'password' => bcrypt('1234')
-        ]);*/
-        // Asignación del rol
-        //$user = User::find(1);
-        //$user->assignRole('Administrator');
+        ]);
+        //Asignación del rol
+        $user = User::find(1);
+        $user->assignRole('Administrator');
     }
 }
