@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Panel de Gestion de Inentario</div>
+                <div class="panel-heading">Panel de Gestion de Inventario</div>
                 <div class="panel-body">
                    
                 <form method="POST" action="{{ route('crear-inventario') }}">
@@ -130,10 +130,6 @@
     </div>
 </div>
 
-<!--<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">-->  
-<!--<script src="//code.jquery.com/jquery.js"></script>-->
-<!--<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
-
 <script type="text/javascript">
 
     $(document).ready(function() {  
@@ -144,8 +140,8 @@
             "columns": [
                 {data: 'id', name: 'id'},
                 {data: 'consecutivo', name: 'consecutivo'},
-                {data: 'seccion[0]', name: 'seccion_ida'},
-                {data: 'sub_seccion_id', name: 'sub_seccion_id'},
+                {data: 'seccion.nombre', name: 'seccion.nombre'},
+                {data: 'sub_seccion.nombre', name: 'sub_seccion.nombre'},
                 {data: 'nombre_expediente', name: 'nombre_expediente'},
                 {data: 'codigo', name: 'codigo'},
                 {data: 'caja', name: 'caja'},

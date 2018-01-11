@@ -12,14 +12,13 @@ class InventariosController extends Controller
 {
     public function index(){
         $secciones = Seccion::all();
-        $subSecciones = SubSeccion::all();
-        $inventarioslist = Inventario::all();
-        //dd($inventarioslist);
+        $subSecciones = SubSeccion::all(); 
+        //$secciones->load('subSecciones');      
+        //dd($secciones->subSecciones);
 
         return view('inventario.index')
             ->with(['secciones' => $secciones,
-                    'subSecciones' => $subSecciones,
-                    'inventarioslist' => $inventarioslist    
+                    'subSecciones' => $subSecciones                   
             ]);
     }
 
