@@ -990,7 +990,11 @@ window.Vue = __webpack_require__(35);
 Vue.component('example-component', __webpack_require__(38));
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  prop: ['mensaje'],
+  data: {
+    mensaje: ''
+  }
 });
 
 /***/ }),
@@ -42983,7 +42987,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "panel-body" }, [
               _vm._v(
-                "\n                    probando mi primer componente\n                "
+                "\n                    probando mi primer componente                                        \n                "
               )
             ])
           ])

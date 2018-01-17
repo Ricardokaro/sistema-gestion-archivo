@@ -6,7 +6,7 @@
                     <div class="panel-heading">Ejemplo Componente</div>
 
                     <div class="panel-body">
-                        probando mi primer componente
+                        probando mi primer componente                                        
                     </div>
                 </div>
             </div>
@@ -20,4 +20,5 @@
             console.log('Component mounted.')
         }
     }
+ 
 </script>
