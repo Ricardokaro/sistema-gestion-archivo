@@ -19,10 +19,17 @@ window.Vue = require('vue');
 Vue.component('example-component',require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
-    el: '#app',
-    prop: ['mensaje'],    
+    el: '#app', 
+    created: function () {
+        this.mostrarSubSecciones()  
+    }, 
     data: {
-        mensaje:''
+        ses: []
+    },
+    methods:{
+        mostrarSubSecciones: function () {
+           return  this.ses = axios.get('secciones/list')
+        }
     }   
 });
 

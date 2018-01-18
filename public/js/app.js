@@ -990,11 +990,18 @@ window.Vue = __webpack_require__(35);
 Vue.component('example-component', __webpack_require__(38));
 
 var app = new Vue({
-  el: '#app',
-  prop: ['mensaje'],
-  data: {
-    mensaje: ''
-  }
+    el: '#app',
+    created: function created() {
+        this.mostrarSubSecciones();
+    },
+    data: {
+        ses: []
+    },
+    methods: {
+        mostrarSubSecciones: function mostrarSubSecciones() {
+            return this.ses = axios.get('secciones/list');
+        }
+    }
 });
 
 /***/ }),
@@ -42956,11 +42963,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
-});
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 /* 41 */

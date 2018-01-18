@@ -11,6 +11,11 @@ class SecionesController extends Controller
    public function index(){
         return view('secciones.index');
    }
+
+   public function listadoSecciones(){
+        $listadoSecciones = Seccion::all();
+        return $listadoSecciones;
+   }
    
    public function store(Request $request){
         //dd($request->all());
