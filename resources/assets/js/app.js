@@ -28,7 +28,7 @@ const app = new Vue({
     },
     methods:{
         mostrarSubSecciones: function () {
-           return  this.ses = axios.get('secciones/list')
+           return  this.ses = axios.get('admin/secciones/list')
         }
     }   
 });

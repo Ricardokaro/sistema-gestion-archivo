@@ -999,7 +999,7 @@ var app = new Vue({
     },
     methods: {
         mostrarSubSecciones: function mostrarSubSecciones() {
-            return this.ses = axios.get('secciones/list');
+            return this.ses = axios.get('admin/secciones/list');
         }
     }
 });
