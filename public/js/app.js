@@ -1013,7 +1013,7 @@ var app = new Vue({
         cargarSubSecciones: function cargarSubSecciones() {
             var _this2 = this;
 
-            axios.get('sub-secciones/list').then(function (response) {
+            axios.get('sub-secciones/' + this.seleccionar_seccion).then(function (response) {
                 _this2.sub_secciones = response.data;
             }).catch(function (error) {
                 console.log(error);

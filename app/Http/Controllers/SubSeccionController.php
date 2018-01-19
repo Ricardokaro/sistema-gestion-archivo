@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\SubSeccion;
 use App\Seccion;
@@ -23,14 +24,10 @@ class SubSeccionController extends Controller
    }
 
    public function listadoSubSecciones($id){
-        $sub_secciones = DB::table('sub')->where('name', 'John')->first();
-        return $sub_secciones;
+        $sub_secciones = DB::table('sub_secciones')->where('seccion_id', $id)->get();
+        //dd($sub_secciones);
+        return response()->json($sub_secciones);
    }
-   public function destroy()
-   {
-       \App\Note::findOrFail($id)->delete();
-   
-       return redirect()->back();
-   }
+  
 }
-}
+

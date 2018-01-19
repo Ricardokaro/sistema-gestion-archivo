@@ -25,11 +25,11 @@
                 
                 <div class="form-group">
                   <label for="subSeccion">Sub Seccion</label>
-                      <select class="form-control" id="subSeccion" name="sub_seccion_id" >                 
+                      <select class="form-control" id="subSeccion" name="sub_seccion_id" >           
                       
-                          @foreach ($subSecciones as $subSeccion)
-                              <option value="{{ $subSeccion->id }}">{{ $subSeccion->nombre }}</option>  
-                          @endforeach
+                         
+                              <option v-for="sub_seccion in sub_secciones" :value="sub_seccion.id">@{{ sub_seccion.nombre }}</option>  
+                        
                                                                         
                       </select>
                   </div>                 

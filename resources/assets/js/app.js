@@ -40,7 +40,7 @@ const app = new Vue({
            
         },
         cargarSubSecciones: function(){              
-            axios.get('sub-secciones/list').then(response => {
+            axios.get('sub-secciones/' + this.seleccionar_seccion).then(response => {
                 this.sub_secciones = response.data;
             }).catch(error => {
                 console.log(error);
