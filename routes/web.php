@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'permission:crear_seccion'],
     Route::get('secciones', 'SecionesController@index')->name('guardar-seccion');    
     Route::get('secciones/list', 'SecionesController@listadoSecciones')->name('listado-seccion');    
     Route::get('sub-secciones','SubSeccionController@index')->name('guardar-sub-secciones');
-    Route::get('sub-secciones/list','SubSeccionController@listadoSubSecciones')->name('listado-sub-secciones');
+    Route::get('sub-secciones/{id}','SubSeccionController@listadoSubSecciones')->name('listado-sub-secciones');
     Route::get('inventarios','inventariosController@index')->name('guardar-inventarios');
     Route::get('inventarios/list','inventariosController@anyData')->name('listado-inventarios');
     Route::post('secciones/insert', 'SecionesController@store')->name('crear-seccion');

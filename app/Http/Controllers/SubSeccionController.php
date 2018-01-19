@@ -22,8 +22,15 @@ class SubSeccionController extends Controller
         $subSeccion->save();
    }
 
-   public function listadoSubSecciones(){
-        $sub_secciones = SubSeccion::all();
+   public function listadoSubSecciones($id){
+        $sub_secciones = DB::table('sub')->where('name', 'John')->first();
         return $sub_secciones;
    }
+   public function destroy()
+   {
+       \App\Note::findOrFail($id)->delete();
+   
+       return redirect()->back();
+   }
+}
 }
