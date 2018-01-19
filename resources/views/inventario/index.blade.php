@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" id="app">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -13,16 +13,16 @@
                   <div class="form-group">
                     <label for="nombreSeccion">Cosecutivo</label>
                     <input type="number" class="form-control" id="consecutivoInventario" name="consecutivo" placeholder="Digite el numero consecutivo">
-                  </div>
+                  </div>                 
                   <div class="form-group">
                   <label for="secciones">Seccion</label>
-                      <select class="form-control" id="secciones" name="seccion_id" >                            
-                          @foreach ($secciones as $seccion)
-                              <option value="{{ $seccion->id }}" >{{ $seccion->nombre }}</option>  
-                          @endforeach                                                  
+                      <select class="form-control" id="secciones" name="seccion_id" v-model="seleccionar_seccion" v-on:change="cargarSubSecciones()">                           
+                          
+                              <option  v-for="seccion in secciones" :value="seccion.id">@{{ seccion.nombre }}</option>  
+                                                                         
                       </select>
                   </div>
-
+                
                 <div class="form-group">
                   <label for="subSeccion">Sub Seccion</label>
                       <select class="form-control" id="subSeccion" name="sub_seccion_id" >                 

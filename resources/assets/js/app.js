@@ -20,15 +20,31 @@ Vue.component('example-component',require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
     el: '#app', 
+    data: {
+        seccion_id : 0,
+        seleccionar_seccion: 0,
+        secciones: [],
+        sub_secciones:[]
+    },
     created: function () {
         this.mostrarSubSecciones()  
-    }, 
-    data: {
-        ses: []
-    },
+    },    
     methods:{
         mostrarSubSecciones: function () {
-           return  this.ses = axios.get('admin/secciones/list')
+           
+           axios.get('secciones/list').then(response => {                               
+                this.secciones = response.data;                               
+           }).catch(error => {
+                console.log(error);
+           });           
+           
+        },
+        cargarSubSecciones: function(){              
+            axios.get('sub-secciones/list').then(response => {
+                this.sub_secciones = response.data;
+            }).catch(error => {
+                console.log(error);
+            }); 
         }
     }   
 });

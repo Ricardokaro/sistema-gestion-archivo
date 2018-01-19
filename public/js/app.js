@@ -991,15 +991,33 @@ Vue.component('example-component', __webpack_require__(38));
 
 var app = new Vue({
     el: '#app',
+    data: {
+        seccion_id: 0,
+        seleccionar_seccion: 0,
+        secciones: [],
+        sub_secciones: []
+    },
     created: function created() {
         this.mostrarSubSecciones();
     },
-    data: {
-        ses: []
-    },
     methods: {
         mostrarSubSecciones: function mostrarSubSecciones() {
-            return this.ses = axios.get('admin/secciones/list');
+            var _this = this;
+
+            axios.get('secciones/list').then(function (response) {
+                _this.secciones = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        cargarSubSecciones: function cargarSubSecciones() {
+            var _this2 = this;
+
+            axios.get('sub-secciones/list').then(function (response) {
+                _this2.sub_secciones = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
     }
 });
@@ -42990,7 +43008,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "panel-body" }, [
               _vm._v(
-                "\n                    probando mi primer componente                                        \n                "
+                "\n                    probando mi primer                                       \n                "
               )
             ])
           ])

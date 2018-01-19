@@ -21,4 +21,9 @@ class SubSeccionController extends Controller
         $subSeccion->seccion_id = $request->seccion_id;
         $subSeccion->save();
    }
+
+   public function listadoSubSecciones(){
+        $sub_secciones = SubSeccion::all();
+        return $sub_secciones;
+   }
 }
