@@ -9,11 +9,7 @@
                 <div class="panel-body">
                    
                 <form method="POST" enctype="multipart/form-data" action="{{ route('crear-inventario') }}">
-                {{ csrf_field() }}
-                  <div class="form-group">
-                    <label for="nombreSeccion">Cosecutivo</label>
-                    <input type="number" class="form-control" id="consecutivoInventario" name="consecutivo" placeholder="Digite el numero consecutivo">
-                  </div>                 
+                {{ csrf_field() }}                              
                   <div class="form-group">
                   <label for="secciones">Seccion</label>
                       <select class="form-control" id="secciones" name="seccion_id" v-model="seleccionar_seccion" v-on:change="cargarSubSecciones()">                           
@@ -62,13 +58,9 @@
                   <div class="row">
                  
                     <div  class="col-sm-3"> 
-                    <label for="numeroCorrelativoUnoInventario">Numero Correlativo 1</label>                  
-                        <input type="number" class="form-control" id="numeroCorrelativoUnoInventario" name="numero_uno" placeholder="">         
-                    </div>
-                    <div  class="col-sm-3"> 
-                    <label for="numeroCorrelativoDosInventario">Numero Correlativo 2</label>                       
-                        <input type="number" class="form-control" id="numeroCorrelativoDosInventario" name="numero_dos" placeholder="">         
-                    </div>
+                    <label for="numeroCorrelativoUnoInventario">Numero Correlativo</label>                  
+                        <input type="text" class="form-control" id="numeroCorrelativoUnoInventario" name="numero_correlativo" placeholder="n\N">         
+                    </div>                   
 
                   </div>
                   
@@ -119,8 +111,7 @@
                         <th scope="col">Caja</th>
                         <th scope="col">Carpeta</th>
                         <th scope="col">Numero de Folios</th>
-                        <th scope="col">Numero Correlativo 1</th>
-                        <th scope="col">Numero Correlativo 2</th>
+                        <th scope="col">Numero Correlativo</th>                        
                         <th scope="col">Fecha Inicial</th>
                         <th scope="col">Fecha Final</th>
                         <th scope="col">action</th>                        
@@ -143,9 +134,9 @@
             "processing": true,
             "serverSide": true,
             "ajax": "{{ route('listado-inventarios') }}",
-            "columns": [             
+            "columns": [          
                 
-                {data: 'consecutivo', name: 'consecutivo'},
+                {data: 'id', name: 'id'},
                 {data: 'seccion.nombre', name: 'seccion.nombre'},
                 {data: 'sub_seccion.nombre', name: 'sub_seccion.nombre'},
                 {data: 'nombre_expediente', name: 'nombre_expediente'},
@@ -153,8 +144,7 @@
                 {data: 'caja', name: 'caja'},
                 {data: 'carpeta', name: 'carpeta'},
                 {data: 'n_folios', name: 'n_folios'},
-                {data: 'numero_uno', name: 'numero_uno'},
-                {data: 'numero_dos', name: 'numero_dos'},
+                {data: 'numero_correlativo', name: 'numero_correlativo'},              
                 {data: 'fecha_inicial', name: 'fecha_inicial'},
                 {data: 'fecha_final', name: 'fecha_final'},
                 {data: 'action', name: 'archivo', orderable: false, searchable: false}

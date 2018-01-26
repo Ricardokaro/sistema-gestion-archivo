@@ -13,7 +13,8 @@ class InventariosController extends Controller
 {
     public function index(){
         $secciones = Seccion::all();
-        $subSecciones = SubSeccion::all(); 
+        $subSecciones = SubSeccion::all();
+       
         //$secciones->load('subSecciones');      
         //dd($secciones->subSecciones);
 
@@ -28,8 +29,7 @@ class InventariosController extends Controller
         //dd($request->all());
 
         $inventario = new Inventario;
-
-        $inventario->consecutivo = $request->consecutivo;
+       
         $inventario->seccion_id = $request->seccion_id;
         $inventario->sub_seccion_id = $request->sub_seccion_id;
         $inventario->nombre_expediente =  $request->nombre_expediente;
@@ -37,8 +37,7 @@ class InventariosController extends Controller
         $inventario->caja = $request->caja;
         $inventario->carpeta = $request->carpeta;
         $inventario->n_folios = $request->n_folios;        
-        $inventario->numero_uno = $request->numero_uno;
-        $inventario->numero_dos = $request->numero_dos;
+        $inventario->numero_correlativo = $request->numero_correlativo;       
         $inventario->fecha_inicial = $request->fecha_inicial;
         $inventario->fecha_final = $request->fecha_final;
 
@@ -91,24 +90,13 @@ class InventariosController extends Controller
                       </button>
                     </div>
                     <div class="modal-body">
+                      
                       <div class="row">
                         <div class="col-md-4"><h4>Seccion: </h4><p>'.$inventario->seccion->nombre.'</p></div>
                         <div class="col-md-4"><h4>Sub Seccion: </h4><p>'.$inventario->subSeccion->nombre.'</p></div>   
                         <div class="col-md-4"><h4>Expediente: </h4><p>'.$inventario->nombre_expediente.'</p></div>                           
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4"><h4>Codigo: </h4><p>'.$inventario->codigo.'</p></div>
-                        <div class="col-md-4"><h4>Caja: </h4><p>'.$inventario->caja.'</p></div>   
-                        <div class="col-md-4"><h4>Carpeta: </h4><p>'.$inventario->carpeta.'</p></div>                           
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4"><h4>Numero de folios: </h4><p>'.$inventario->n_folios.'</p></div>
-                        <div class="col-md-4"><h4>Numero Correlativo: </h4><p>'.$inventario->numero_uno.'-'.$inventario->numero_dos.'</p></div> 
-                        <div class="col-md-4"><h4>Fecha Inicial: </h4><p>'.$inventario->fecha_inicial.'</p></div>                                    
-                      </div>
-                      <div class="row">                        
-                        <div class="col-md-4"><h4>Fecha Inicial: </h4><p>'.$inventario->fecha_final.'</p></div>                                                           
-                      </div>
+                      </div>                  
+                     
                       
                       <div class="row">
                         <div class="col-md-4">                        

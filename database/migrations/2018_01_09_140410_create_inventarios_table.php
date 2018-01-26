@@ -14,8 +14,7 @@ class CreateInventariosTable extends Migration
     public function up()
     {
         Schema::create('inventarios', function (Blueprint $table) {           
-            $table->increments('id')->unsigned();
-            $table->integer('consecutivo')->unsigned();       
+            $table->increments('id')->unsigned();                  
             
             $table->integer('seccion_id')->unsigned();
             $table->foreign('seccion_id')
@@ -33,8 +32,7 @@ class CreateInventariosTable extends Migration
             $table->integer('caja')->unsigned();
             $table->integer('carpeta')->unsigned();
             $table->integer('n_folios')->unsigned();
-            $table->integer('numero_uno')->unsigned();
-            $table->integer('numero_dos')->unsigned(); 
+            $table->String('numero_correlativo');            
             $table->date('fecha_inicial');
             $table->date('fecha_final');               
                   
