@@ -8,7 +8,7 @@
                 <div class="panel-heading">Panel de Gestion de Inventario</div>
                 <div class="panel-body">
                    
-                <form method="POST" action="{{ route('crear-inventario') }}">
+                <form method="POST" enctype="multipart/form-data" action="{{ route('crear-inventario') }}">
                 {{ csrf_field() }}
                   <div class="form-group">
                     <label for="nombreSeccion">Cosecutivo</label>
@@ -82,6 +82,11 @@
                     <input type="date" class="form-control" id="fechaFinalInventario" name="fecha_final" >
                   </div>
 
+                  <div class="form-group">
+                    <label for="archivoInventario">Cargar Expediente</label>
+                    <input type="file" class="form-control" id="archivoInventario" name="archivo" placeholder="Digite el codigo">
+                  </div>
+
                     <hr>
                   <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
@@ -105,8 +110,7 @@
 
                 <table class="table" id="tabla-inventario">
                     <thead>
-                        <tr>
-                        <th scope="col">Id</th>
+                        <tr>                       
                         <th scope="col">Consecutivo</th>
                         <th scope="col">Nombre Seccion</th>
                         <th scope="col">Nombre Sub Seccion</th>
@@ -119,6 +123,7 @@
                         <th scope="col">Numero Correlativo 2</th>
                         <th scope="col">Fecha Inicial</th>
                         <th scope="col">Fecha Final</th>
+                        <th scope="col">action</th>                        
                         </tr>
                     </thead>
                    
@@ -132,13 +137,14 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function() {  
+    $(document).ready(function() {
+
         oTable = $('#tabla-inventario').DataTable({
             "processing": true,
             "serverSide": true,
             "ajax": "{{ route('listado-inventarios') }}",
-            "columns": [
-                {data: 'id', name: 'id'},
+            "columns": [             
+                
                 {data: 'consecutivo', name: 'consecutivo'},
                 {data: 'seccion.nombre', name: 'seccion.nombre'},
                 {data: 'sub_seccion.nombre', name: 'sub_seccion.nombre'},
@@ -150,11 +156,15 @@
                 {data: 'numero_uno', name: 'numero_uno'},
                 {data: 'numero_dos', name: 'numero_dos'},
                 {data: 'fecha_inicial', name: 'fecha_inicial'},
-                {data: 'fecha_final', name: 'fecha_final'}
-
+                {data: 'fecha_final', name: 'fecha_final'},
+                {data: 'action', name: 'archivo', orderable: false, searchable: false}
             ]
-        });
-    });
+        });       
+    });    
+      
+
+        
+       
 </script>
 
 @endsection

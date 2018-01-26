@@ -10,7 +10,7 @@ use App\subSeccion;
 class Inventario extends Model
 {
     protected $table = 'inventarios';
-    protected $fillable = ['id', 'consecutivo','seccion_id','sub_seccion_id','nombre_expediente','codigo','caja','carpeta','n_folios','numero_uno','numero_dos','f_inicial','f_final'];  
+    protected $fillable = ['id', 'consecutivo','seccion_id','sub_seccion_id','nombre_expediente','codigo','caja','carpeta','n_folios','numero_uno','numero_dos','f_inicial','f_final','archivo'];  
     
     public function seccion(){
         return $this->belongsTo('App\Seccion');

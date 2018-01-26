@@ -21,14 +21,20 @@ Route::group(['prefix' => 'admin',  'middleware' => 'permission:crear_seccion'],
 {
     Route::get('secciones', 'SecionesController@index')->name('guardar-seccion');    
     Route::get('secciones/list', 'SecionesController@listadoSecciones')->name('listado-seccion');    
+    
     Route::get('sub-secciones','SubSeccionController@index')->name('guardar-sub-secciones');
     Route::get('sub-secciones/{id}','SubSeccionController@listadoSubSecciones')->name('listado-sub-secciones');
-    Route::get('inventarios','inventariosController@index')->name('guardar-inventarios');
+    
+    Route::get('inventarios','inventariosController@index')->name('guardar-inventarios');    
+    Route::get('inventario/{archivo}/verExpediente','inventariosController@verExpediente')->name('ver-expediente-inventario');    
     Route::get('inventarios/list','inventariosController@anyData')->name('listado-inventarios');
+    Route::get('storage/{archivo}','inventariosController@verExpediente')->name('storage');  
+   
     Route::post('secciones/insert', 'SecionesController@store')->name('crear-seccion');
     Route::post('sub-seccion/insert', 'SubSeccionController@store')->name('crear-sub-seccion');
     Route::post('inventarios/insert', 'inventariosController@store')->name('crear-inventario');
     Route::post('inventarios/buscar', 'inventariosController@buscar')->name('buscar-inventario');
+    
 
 });
 

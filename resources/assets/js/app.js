@@ -16,7 +16,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component',require('./components/ExampleComponent.vue'));
+Vue.component('Inventario-component',require('./components/InventarioComponent.vue'));
 
 const app = new Vue({
     el: '#app', 
@@ -24,7 +24,8 @@ const app = new Vue({
         seccion_id : 0,
         seleccionar_seccion: 0,
         secciones: [],
-        sub_secciones:[]
+        sub_secciones:[],
+        probar:0
     },
     created: function () {
         this.mostrarSubSecciones()  
@@ -45,6 +46,9 @@ const app = new Vue({
             }).catch(error => {
                 console.log(error);
             }); 
+        },
+        mostrar: function(){
+            alert('hola');
         }
     }   
 });

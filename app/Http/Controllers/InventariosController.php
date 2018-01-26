@@ -8,6 +8,7 @@ use App\SubSeccion;
 use App\Inventario;
 use Yajra\DataTables\Facades\DataTables;
 
+
 class InventariosController extends Controller
 {
     public function index(){
@@ -41,15 +42,89 @@ class InventariosController extends Controller
         $inventario->fecha_inicial = $request->fecha_inicial;
         $inventario->fecha_final = $request->fecha_final;
 
+         //obtenemos el campo file definido en el formulario       
+        $file = $request->file('archivo');
+ 
+        //obtenemos el nombre del archivo
+        $nombre = $file->getClientOriginalName();
+ 
+        //indicamos que queremos guardar un nuevo archivo en el disco local
+        \Storage::disk('local')->put($nombre,  \File::get($file));
+ 
+        $inventario->archivo = $nombre;
+
         $inventario->save();
         return back();
     }
 
+    public function verExpediente($archivo){
+      $public_path = storage_path('app');      
+      $url = $public_path.'/'.$archivo;
+      //verificamos si el archivo existe y lo retornamos
+      if (\Storage::exists($archivo))
+      {
+        //return $url;
+        return response()->download($url);
+      }
+      //si no se encuentra lanzamos un error 404.
+      abort(404);
+    }
+
+   
     public function anyData()
     {
        $inventarioslist = Inventario::all(); 
        $inventarioslist->load('seccion', 'subSeccion');      
-       return Datatables::of($inventarioslist)->make(true);
+       return Datatables::of($inventarioslist)->addColumn('action', function ($inventario) {
+       return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal'.$inventario->id.'">
+                Show 
+              </button>
+              
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal'.$inventario->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-4"><h4>Seccion: </h4><p>'.$inventario->seccion->nombre.'</p></div>
+                        <div class="col-md-4"><h4>Sub Seccion: </h4><p>'.$inventario->subSeccion->nombre.'</p></div>   
+                        <div class="col-md-4"><h4>Expediente: </h4><p>'.$inventario->nombre_expediente.'</p></div>                           
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4"><h4>Codigo: </h4><p>'.$inventario->codigo.'</p></div>
+                        <div class="col-md-4"><h4>Caja: </h4><p>'.$inventario->caja.'</p></div>   
+                        <div class="col-md-4"><h4>Carpeta: </h4><p>'.$inventario->carpeta.'</p></div>                           
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4"><h4>Numero de folios: </h4><p>'.$inventario->n_folios.'</p></div>
+                        <div class="col-md-4"><h4>Numero Correlativo: </h4><p>'.$inventario->numero_uno.'-'.$inventario->numero_dos.'</p></div> 
+                        <div class="col-md-4"><h4>Fecha Inicial: </h4><p>'.$inventario->fecha_inicial.'</p></div>                                    
+                      </div>
+                      <div class="row">                        
+                        <div class="col-md-4"><h4>Fecha Inicial: </h4><p>'.$inventario->fecha_final.'</p></div>                                                           
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-md-4">                        
+                            <a href="http://localhost/sistema-gestion-archivo/public/admin/storage/'.$inventario->archivo.'"  class="btn btn-primary">Descargar Expediente</a>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>';
+        })->make(true);
     }
     
 }
