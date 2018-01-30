@@ -20,8 +20,11 @@ Route::group(['middleware' => ['permission:destroy_notes']], function () {
 Route::group(['prefix' => 'admin',  'middleware' => 'permission:crear_seccion'], function()
 {
     Route::get('secciones', 'SecionesController@index')->name('guardar-seccion');    
-    Route::get('secciones/list', 'SecionesController@listadoSecciones')->name('listado-seccion');    
+    Route::get('secciones/list', 'SecionesController@listadoSecciones')->name('listado-seccion');
     
+    Route::get('series/list', 'SeriesController@listadoSeries')->name('listado-serie');   
+    Route::get('sub-series/{id}','SubSerieController@listadoSeries')->name('listado-sub-series');
+
     Route::get('sub-secciones','SubSeccionController@index')->name('guardar-sub-secciones');
     Route::get('sub-secciones/{id}','SubSeccionController@listadoSubSecciones')->name('listado-sub-secciones');
     

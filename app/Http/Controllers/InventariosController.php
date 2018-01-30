@@ -32,12 +32,13 @@ class InventariosController extends Controller
        
         $inventario->seccion_id = $request->seccion_id;
         $inventario->sub_seccion_id = $request->sub_seccion_id;
+        $inventario->serie_id = $request->serie_id;
+        $inventario->sub_serie_id = $request->sub_serie_id;
         $inventario->nombre_expediente =  $request->nombre_expediente;
         $inventario->codigo = $request->codigo;
         $inventario->caja = $request->caja;
         $inventario->carpeta = $request->carpeta;
-        $inventario->n_folios = $request->n_folios;        
-        $inventario->numero_correlativo = $request->numero_correlativo;       
+        $inventario->n_folios = $request->n_folios; 
         $inventario->fecha_inicial = $request->fecha_inicial;
         $inventario->fecha_final = $request->fecha_final;
 
@@ -73,7 +74,7 @@ class InventariosController extends Controller
     public function anyData()
     {
        $inventarioslist = Inventario::all(); 
-       $inventarioslist->load('seccion', 'subSeccion');      
+       $inventarioslist->load('seccion', 'subSeccion','serie','subSerie');      
        return Datatables::of($inventarioslist)->addColumn('action', function ($inventario) {
        return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal'.$inventario->id.'">
                 Show 

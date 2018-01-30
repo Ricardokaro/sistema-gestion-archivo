@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-
-class AddCampoArchivopdfInventariosTable extends Migration
+class CreateSeriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +12,12 @@ class AddCampoArchivopdfInventariosTable extends Migration
      * @return void
      */
     public function up()
-    {        
-        Schema::table('inventarios', function($table)
-        {
-            $table->string('archivo');
+    {
+        Schema::create('series', function (Blueprint $table) {
+            $table->increments('id')->unsigned();
+            $table->String('nombre');
+
+            $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ class AddCampoArchivopdfInventariosTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('series');
     }
 }

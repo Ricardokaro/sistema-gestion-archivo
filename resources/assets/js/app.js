@@ -23,16 +23,19 @@ const app = new Vue({
     data: {
         seccion_id : 0,
         seleccionar_seccion: 0,
-        secciones: [],
+        seleccionar_serie: 0,
+        secciones: [],        
         sub_secciones:[],
+        series:[],
+        sub_series:[],
         probar:0
     },
     created: function () {
-        this.mostrarSubSecciones()  
+        this.mostrarSubSecciones() 
+        this.mostrarSerie() 
     },    
     methods:{
-        mostrarSubSecciones: function () {
-           
+        mostrarSubSecciones: function () {           
            axios.get('secciones/list').then(response => {                               
                 this.secciones = response.data;                               
            }).catch(error => {
@@ -47,9 +50,22 @@ const app = new Vue({
                 console.log(error);
             }); 
         },
-        mostrar: function(){
-            alert('hola');
-        }
+        mostrarSerie: function () {            
+            axios.get('series/list').then(response => {                               
+                 this.series = response.data;                               
+            }).catch(error => {
+                 console.log(error);
+            });           
+            
+         },
+         cargarSubSeries: function(){              
+             axios.get('sub-series/' + this.seleccionar_serie).then(response => {
+                 this.sub_series = response.data;
+             }).catch(error => {
+                 console.log(error);
+             }); 
+         }
+        
     }   
 });
 

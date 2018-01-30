@@ -963,7 +963,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
-module.exports = __webpack_require__(38);
+module.exports = __webpack_require__(42);
 
 
 /***/ }),
@@ -987,19 +987,23 @@ window.Vue = __webpack_require__(35);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('Inventario-component', __webpack_require__(49));
+Vue.component('Inventario-component', __webpack_require__(38));
 
 var app = new Vue({
     el: '#app',
     data: {
         seccion_id: 0,
         seleccionar_seccion: 0,
+        seleccionar_serie: 0,
         secciones: [],
         sub_secciones: [],
+        series: [],
+        sub_series: [],
         probar: 0
     },
     created: function created() {
         this.mostrarSubSecciones();
+        this.mostrarSerie();
     },
     methods: {
         mostrarSubSecciones: function mostrarSubSecciones() {
@@ -1020,9 +1024,25 @@ var app = new Vue({
                 console.log(error);
             });
         },
-        mostrar: function mostrar() {
-            alert('hola');
+        mostrarSerie: function mostrarSerie() {
+            var _this3 = this;
+
+            axios.get('series/list').then(function (response) {
+                _this3.series = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        cargarSubSeries: function cargarSubSeries() {
+            var _this4 = this;
+
+            axios.get('sub-series/' + this.seleccionar_serie).then(function (response) {
+                _this4.sub_series = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
+
     }
 });
 
@@ -42808,30 +42828,14 @@ exports.clearImmediate = clearImmediate;
 
 /***/ }),
 /* 38 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(50)
+var normalizeComponent = __webpack_require__(39)
 /* script */
-var __vue_script__ = __webpack_require__(51)
+var __vue_script__ = __webpack_require__(40)
 /* template */
-var __vue_template__ = __webpack_require__(52)
+var __vue_template__ = __webpack_require__(41)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -42870,7 +42874,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 50 */
+/* 39 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -42979,7 +42983,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 51 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42999,12 +43003,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 52 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -43045,6 +43048,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-602fc036", module.exports)
   }
 }
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

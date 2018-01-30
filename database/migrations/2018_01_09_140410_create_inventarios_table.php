@@ -25,16 +25,15 @@ class CreateInventariosTable extends Migration
             $table->foreign('sub_seccion_id')
                   ->references('id')
                   ->on('sub_secciones');
+            
 
-
-            $table->String('nombre_expediente');
-            $table->String('codigo');
+            $table->String('nombre_expediente')->nullable();
+            $table->String('codigo')->nullable();            
             $table->integer('caja')->unsigned();
             $table->integer('carpeta')->unsigned();
-            $table->integer('n_folios')->unsigned();
-            $table->String('numero_correlativo');            
-            $table->date('fecha_inicial');
-            $table->date('fecha_final');               
+            $table->integer('n_folios')->unsigned();                       
+            $table->date('fecha_inicial')->nullable();
+            $table->date('fecha_final')->nullable();               
                   
 
             $table->timestamps();

@@ -3,7 +3,10 @@
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\DB;
 use App\User;
+
+
 
 
 class NotesSeeder extends Seeder
@@ -36,5 +39,47 @@ class NotesSeeder extends Seeder
         //Asignación del rol
         $user = User::find(1);
         $user->assignRole('Administrator');
+        
+        DB::table('secciones')->insert([
+            [ 'nombre' => 'DESPACHO DEL ALCALDE' ],
+            [ 'nombre' => 'GOBIERNO' ],
+            [ 'nombre' => 'HACIENDA' ],
+            [ 'nombre' => 'DESARROLLO SOCIAL' ],
+            [ 'nombre' => 'PLANEACION' ],
+            [ 'nombre' => 'AGRICULTURA' ]
+        ]);
+        
+        DB::table('sub_secciones')->insert([
+            [ 'nombre' => 'SECRETARÍA EJECUTIVA', 'seccion_id' => 1],
+            [ 'nombre' => 'OFICINA DE ASESORÍA JURÍDICA', 'seccion_id' => 1],
+            [ 'nombre' => 'OFICINA DE CONTROL INTERNO', 'seccion_id' => 1],
+            [ 'nombre' => 'DESPACHO DEL SECRETARIO', 'seccion_id' => 2],
+            [ 'nombre' => 'COMISARIA DE FAMILIA', 'seccion_id' => 2],
+            [ 'nombre' => 'INSPECCIÓN CENTRAL DE POLICÍA', 'seccion_id' => 2],
+            [ 'nombre' => 'INSPECTOR RURAL DE LOS ANDES', 'seccion_id' => 2],
+            [ 'nombre' => 'INSPECTOR RURAL DE LAS TINAS', 'seccion_id' => 2],
+            [ 'nombre' => 'INSPECTOR RURAL DE SAN JOSÉ DE BALLESTEROS', 'seccion_id' => 2],
+            [ 'nombre' => 'INSPECTOR RURAL DE SAN JOSÉ DE BALLESTEROS', 'seccion_id' => 2],
+            [ 'nombre' => 'INSPECTOR RURAL DE EL BAJO', 'seccion_id' => 2],
+            [ 'nombre' => 'ENLACE MUNICIPAL DE VICTIMAS', 'seccion_id' => 2],
+            [ 'nombre' => 'ARCHIVO', 'seccion_id' => 2],
+            [ 'nombre' => 'DESPACHO DEL SECRETARIO', 'seccion_id' => 3],
+            [ 'nombre' => 'CONTADOR', 'seccion_id' => 3],
+            [ 'nombre' => 'RECAUDOS', 'seccion_id' => 3],
+            [ 'nombre' => 'PRESUPUESTOS', 'seccion_id' => 3],
+            [ 'nombre' => 'DESPACHO DEL SECRETARIO', 'seccion_id' => 4],
+            [ 'nombre' => 'VIGILANTE DE SALUD PUBLICA', 'seccion_id' => 4],
+            [ 'nombre' => 'OFICINA DE MAS FAMILIAS EN ACCIÓN', 'seccion_id' => 4],
+            [ 'nombre' => 'PROGRAMAS SOCIALES', 'seccion_id' => 4],
+            [ 'nombre' => 'COORDINADOR SALUD PUBLICA', 'seccion_id' => 4],
+            [ 'nombre' => 'COORDINADOR DE CULTURA', 'seccion_id' => 4],
+            [ 'nombre' => 'COORDINADOR DE DEPORTE', 'seccion_id' => 4],
+            [ 'nombre' => 'SERVICIO DE ATENCIÓN A LA COMUNIDAD - SAC', 'seccion_id' => 4],
+            [ 'nombre' => 'DESPACHO DEL SECRETARIO', 'seccion_id' => 5],
+            [ 'nombre' => 'SISBEN', 'seccion_id' => 5],
+            [ 'nombre' => 'DESPACHO DEL SECRETARIO', 'seccion_id' => 6],
+            
+        ]);
+      
     }
 }
