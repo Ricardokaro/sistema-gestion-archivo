@@ -38,6 +38,7 @@ class InventariosController extends Controller
         $inventario->codigo = $request->codigo;
         $inventario->caja = $request->caja;
         $inventario->carpeta = $request->carpeta;
+        $inventario->tomo = $request->tomo;
         $inventario->n_folios = $request->n_folios; 
         $inventario->fecha_inicial = $request->fecha_inicial;
         $inventario->fecha_final = $request->fecha_final;
@@ -64,7 +65,8 @@ class InventariosController extends Controller
       if (\Storage::exists($archivo))
       {
         //return $url;
-        return response()->download($url);
+        //return response()->download($url);
+        return response()->file($url);
       }
       //si no se encuentra lanzamos un error 404.
       abort(404);
@@ -76,11 +78,14 @@ class InventariosController extends Controller
        $inventarioslist = Inventario::all(); 
        $inventarioslist->load('seccion', 'subSeccion','serie','subSerie');      
        return Datatables::of($inventarioslist)->addColumn('action', function ($inventario) {
-       return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal'.$inventario->id.'">
-                Show 
+       return '<a href="http://localhost/sistema-gestion-archivo/public/admin/storage/'.$inventario->archivo.'" target="_blank" class="btn btn-primary">Ver</a>';
+       
+       
+       /*'<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal'.$inventario->id.'">
+                Ver 
               </button>
               
-              <!-- Modal -->
+              <!-- Modal -->  
               <div class="modal fade" id="exampleModal'.$inventario->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -101,7 +106,7 @@ class InventariosController extends Controller
                       
                       <div class="row">
                         <div class="col-md-4">                        
-                            <a href="http://localhost/sistema-gestion-archivo/public/admin/storage/'.$inventario->archivo.'"  class="btn btn-primary">Descargar Expediente</a>
+                            <a href="http://localhost/sistema-gestion-archivo/public/admin/storage/'.$inventario->archivo.'" target="_blank" class="btn btn-primary">Ver Expediente</a>
                         </div>
                       </div>
                       
@@ -112,7 +117,9 @@ class InventariosController extends Controller
                     </div>
                   </div>
                 </div>
-              </div>';
+              </div>';*/
+
+
         })->make(true);
     }
     

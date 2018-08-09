@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Sistema Gestion de Archivo'),
+    'name' => env('APP_NAME', 'laravel'),
 
     /*
     |--------------------------------------------------------------------------

@@ -71,6 +71,11 @@
                   </div>
 
                   <div class="form-group">
+                    <label for="tomoInventario">Tomo</label>
+                    <input type="number" class="form-control" id="tomoInventario" name="tomo" placeholder="Digite el numero deL tomo">
+                  </div>
+
+                  <div class="form-group">
                     <label for="nFolioInventario">Numero de Folios</label>
                     <input type="number" class="form-control" id="nFolioInventario" name="n_folios" placeholder="Digite el numero de folios">
                   </div>                 
@@ -123,6 +128,7 @@
                         <th scope="col">Codigo</th>
                         <th scope="col">Caja</th>
                         <th scope="col">Carpeta</th>
+                        <th scope="col">Tomo</th>
                         <th scope="col">Numero de Folios</th>                                              
                         <th scope="col">Fecha Inicial</th>
                         <th scope="col">Fecha Final</th>
@@ -157,6 +163,7 @@
                 {data: 'codigo', name: 'codigo'},
                 {data: 'caja', name: 'caja'},
                 {data: 'carpeta', name: 'carpeta'},
+                {data: 'tomo', name: 'tomo'},
                 {data: 'n_folios', name: 'n_folios'},                
                 {data: 'fecha_inicial', name: 'fecha_inicial'},
                 {data: 'fecha_final', name: 'fecha_final'},

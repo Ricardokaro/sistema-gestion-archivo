@@ -31,6 +31,7 @@ class CreateInventariosTable extends Migration
             $table->String('codigo')->nullable();            
             $table->integer('caja')->unsigned();
             $table->integer('carpeta')->unsigned();
+            $table->integer('tomo')->unsigned();
             $table->integer('n_folios')->unsigned();                       
             $table->date('fecha_inicial')->nullable();
             $table->date('fecha_final')->nullable();               
